@@ -50,3 +50,4 @@ C:\Users\brwa.ahmed\source\repos\Rhythm\obj\Debug\net9.0-windows\Rhythm.genrunti
 C:\Users\brwa.ahmed\source\repos\Rhythm\obj\Debug\net9.0-windows\ref\Rhythm.dll
 C:\Users\brwa.ahmed\source\repos\Rhythm\obj\Debug\net9.0-windows\Rhythm.Properties.Resources.resources
 C:\Users\brwa.ahmed\source\repos\Rhythm\bin\Debug\net9.0-windows\ManagedBass.dll
+C:\Users\brwa.ahmed\source\repos\Rhythm\obj\Debug\net9.0-windows\Rhythm.sourcelink.json

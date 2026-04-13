@@ -22,8 +22,7 @@ namespace Rhythm
         // No idea what to call this in a proper way \\
         private int LastHitDelta = 0;
 
-        private readonly string Map;
-        private Keybinds Keybinds;
+        public bool IsDoneParsing;
 
         // Audio \\
         public WaveOutEvent OutputDevice;
@@ -59,6 +58,10 @@ namespace Rhythm
         private bool[] ColumnPressed = new bool[4];
 
         private float AccuracyCalculation;
+
+        private Keybinds Keybinds;
+
+        private readonly string Map;
 
         // Data \\
         private List<Note> Notes = new List<Note>();
@@ -483,6 +486,7 @@ namespace Rhythm
 
                 AddNoteFromBeatmap(BeatmapX, Time);
             }
+            IsDoneParsing = true;
         }
 
         // Score Display \\

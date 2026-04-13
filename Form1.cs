@@ -1,5 +1,7 @@
+using System;
 using Microsoft.VisualBasic.Devices;
 using System.Data;
+using System.Threading;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
@@ -8,6 +10,7 @@ using System.Security.AccessControl;
 using System.Windows.Forms;
 using NAudio.Wave;
 using ManagedBass;
+using System.Threading.Tasks;
 
 namespace Rhythm
 {
@@ -132,12 +135,15 @@ namespace Rhythm
             }
         }
 
-        private void BeatmapSelectionBox_KeyDown(object sender, KeyEventArgs Key)
+        private async void BeatmapSelectionBox_KeyDown(object sender, KeyEventArgs Key)
         {
             if (Key.KeyCode == Keys.Enter)
             {
                 if (BeatmapSelectionBox.SelectedItem != null)
                 {
+                    this.ActiveControl = null; /* uhhh noticed that turning off visibility for a control doesnt make the control be out of focus
+                    which lead to whoever playing this can just press enter again to start another play which broke the game */
+
                     BeatmapPreviewBackground.Visible = false;
 
                     Beatmap Selected = (Beatmap)BeatmapSelectionBox.SelectedItem;
@@ -206,14 +212,14 @@ namespace Rhythm
                     Leave.Visible = false;
                     GameplayPanel.Visible = true;
 
+                    // Score Panel \\
+                    ScoreMapName.Text = CurrentMap.Text;
+                    ScoreMapBackground.Image = SongBackgroundBox.Image;
+
                     VSRG.StartMap();
                     VSRG.PlaySong();
                     GameTick.Tick += GameTick_Tick;
                     GameTick.Start();
-
-                    // Score Panel \\
-                    ScoreMapName.Text = CurrentMap.Text;
-                    ScoreMapBackground.Image = SongBackgroundBox.Image;
                 }
             }
         }
